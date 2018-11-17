@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+
       // Initialize Firebase
       var config = {
         apiKey: "AIzaSyAnkPIzEiHJ6Qd6-lhbBFFtrbp4A8K1urI",
