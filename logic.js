@@ -14,7 +14,28 @@ $(document).ready(function () {
   var database = firebase.database();
 
 
- 
+ database.ref().on("child_added", function(snapshot) {
+    var row = $("<tr>");
+    var namedata = $("<td>");
+    var roledata = $("<td>");
+    var datedata = $("<td>");
+    var ratedata = $("<td>");
+
+    var name = snapshot.val().name.trim();
+    var role = snapshot.val().role.trim();
+    var date = snapshot.val().date.trim();
+    var rate = snapshot.val().rate.trim();
+
+    namedata.text(name);
+    roledata.text(role);
+    datedata.text(date);
+    ratedata.text(rate);
+
+    row.append(namedata, roledata, datedata, ratedata);
+
+    $("#employee-table > tbody").append(row);
+
+ })
 
 
     $("#submitBtn").click(function (e) {
@@ -32,12 +53,7 @@ $(document).ready(function () {
         var date = $("#date-input").val().trim();
         var rate = $("#rate-input").val().trim();
 
-        namedata.text(name);
-        roledata.text(role);
-        datedata.text(date);
-        ratedata.text(rate);
-    
-        row.append(namedata, roledata, datedata, ratedata);
+
     
         $("#employee-table > tbody").append(row);
 
